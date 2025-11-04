@@ -9,7 +9,7 @@ function searchCondition() {
     fetch('travel_recommendation_api.json')
       .then(response => response.json())
       .then(data => {
-        const result = data.find(item => item.name.toLowerCase() === input);
+        const result = data.value.find(item => item.name.toLowerCase() === input);
         console.log(result);
         if (result.cities) {
             result = result.cities;
