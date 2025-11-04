@@ -53,6 +53,26 @@ nav {
     padding: 2em;
     color: white;
   }
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+.title {
+    font-weight: bold;
+    margin: 10px 0;
+}
+.description {
+    font-size: 14px;
+    color: #555;
+}
   
   h1 {
     margin-bottom: 20px;

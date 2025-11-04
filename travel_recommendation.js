@@ -1,30 +1,47 @@
 const btnSearch = document.getElementById('btnSearch');
-const results = [];
+const btnClear = document.getElementById('btnClear');
+
+// Function to create HTML for a destination card
+        function createCard(title, imageUrl, description) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${title}">
+                <div class="title">${title}</div>
+                <div class="description">${description}</div>
+            `;
+            return card;
+        }
 
 function searchCondition() {
     const input = document.getElementById('conditionInput').value.toLowerCase();
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = '';
-
+    const dataKeys = ["countries", "beaches", "temples"];
+    
     fetch('travel_recommendation_api.json')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        const result = data.value.find(item => item.name.toLowerCase() === input);
+        if (dataKeys.includes(input)) {
+    
+        const result = data[input];
         console.log(result);
-        if (result.cities) {
-            result = result.cities;
-        }
-        console.log(result);
-        if (result) {
-          const name = result.name;
-          const imageUrl = result.imageUrl;
-          const description = result.description;
-
-          resultDiv.innerHTML += `<h2>${name}</h2>`;
-          resultDiv.innerHTML += `<img src="./img/${imageUrl}" alt="${name}">`;
-
-          resultDiv.innerHTML += `<p>${description}</p>`;
+        if (data) {
+                data.forEach(item => {
+                    if (keyword === 'countries') {
+                        item.cities.forEach(city => {
+                            const card = createCard(city.name, city.imageUrl, city.description);
+                            resultDiv.appendChild(card);
+                        });
+                    } else { // beaches and temples
+                        const card = createCard(item.name, item.imageUrl, item.description);
+                        resultDiv.appendChild(card);
+                    }
+                });
+            } else {
+                resultDiv.innerHTML = 'No data available for this keyword.';
+            }
+        
         } else {
           resultDiv.innerHTML = 'Condition not found.';
         }
@@ -34,4 +51,13 @@ function searchCondition() {
         resultDiv.innerHTML = 'An error occurred while fetching data.';
       });
   }
+
+  function clearSearchCondition() {
+    const input = document.getElementById('conditionInput');
+    const resultDiv = document.getElementById('result');
+    input.value('');
+    resultDiv.innerHTML = '';
+  }
+
     btnSearch.addEventListener('click', searchCondition);
+    btnClear.addEventListener('click', clearSearchCondition);
