@@ -53,10 +53,10 @@ function searchCondition() {
   }
 
   function clearSearchCondition() {
-    const input = document.getElementById('conditionInput');
-    const resultDiv = document.getElementById('result');
-    input.value('');
-    resultDiv.innerHTML = '';
+    const inputElement = document.getElementById('conditionInput');
+    const resultDivElement = document.getElementById('result');
+    inputElement.value('');
+    resultDivElement.innerHTML = '';
   }
 
     btnSearch.addEventListener('click', searchCondition);
