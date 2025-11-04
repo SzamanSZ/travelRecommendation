@@ -20,12 +20,10 @@ function searchCondition() {
           const imageUrl = result.imageUrl;
           const description = result.description;
 
-          resultDiv.innerHTML += `<h2>${condition.name}</h2>`;
-          resultDiv.innerHTML += `<img src="${condition.imagesrc}" alt="hjh">`;
+          resultDiv.innerHTML += `<h2>${name}</h2>`;
+          resultDiv.innerHTML += `<img src="./img/${imageUrl}" alt="${name}">`;
 
-          resultDiv.innerHTML += `<p><strong>Symptoms:</strong> ${symptoms}</p>`;
-          resultDiv.innerHTML += `<p><strong>Prevention:</strong> ${prevention}</p>`;
-          resultDiv.innerHTML += `<p><strong>Treatment:</strong> ${treatment}</p>`;
+          resultDiv.innerHTML += `<p>${description}</p>`;
         } else {
           resultDiv.innerHTML = 'Condition not found.';
         }
