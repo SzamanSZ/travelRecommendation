@@ -26,8 +26,8 @@ function searchCondition() {
     
         const result = data[input];
         console.log(result);
-        if (data) {
-                data.forEach(item => {
+        if (result) {
+                result.forEach(item => {
                     if (keyword === 'countries') {
                         item.cities.forEach(city => {
                             const card = createCard(city.name, city.imageUrl, city.description);
