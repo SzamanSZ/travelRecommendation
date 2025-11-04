@@ -6,7 +6,7 @@ const btnClear = document.getElementById('btnClear');
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${imageUrl}" alt="${title}">
+                <img src=".img/${imageUrl}" alt="${title}">
                 <div class="title">${title}</div>
                 <div class="description">${description}</div>
             `;
@@ -17,18 +17,26 @@ function searchCondition() {
     const input = document.getElementById('conditionInput').value.toLowerCase();
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = '';
-    const dataKeys = ["countries", "beaches", "temples"];
+    const dataKeys = ["country", "beach", "temple"];
     
     fetch('travel_recommendation_api.json')
       .then(response => response.json())
       .then(data => {
         if (dataKeys.includes(input)) {
-    
+        if (input === "country") {
+            input = "countries";
+        }
+        else if (input === "beach") {
+            input = "beaches";
+        }
+        else if (input === "temple") {
+            input = "temples";
+        }
         const result = data[input];
         console.log(result);
         if (result) {
                 result.forEach(item => {
-                    if (input === 'countries') {
+                    if (input === 'country') {
                         item.cities.forEach(city => {
                             const card = createCard(city.name, city.imageUrl, city.description);
                             resultDiv.appendChild(card);
@@ -55,7 +63,7 @@ function searchCondition() {
   function clearSearchCondition() {
     const inputElement = document.getElementById('conditionInput');
     const resultDivElement = document.getElementById('result');
-    inputElement.value('');
+    inputElement.value = '';
     resultDivElement.innerHTML = '';
   }
 
