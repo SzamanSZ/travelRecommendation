@@ -6,7 +6,7 @@ const btnClear = document.getElementById('btnClear');
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
-                <img src=".img/${imageUrl}" alt="${title}">
+                <img src="./img/${imageUrl}" alt="${title}">
                 <div class="title">${title}</div>
                 <div class="description">${description}</div>
             `;
