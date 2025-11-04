@@ -36,7 +36,7 @@ function searchCondition() {
         console.log(result);
         if (result) {
                 result.forEach(item => {
-                    if (input === 'country') {
+                    if (input === 'countries') {
                         item.cities.forEach(city => {
                             const card = createCard(city.name, city.imageUrl, city.description);
                             resultDiv.appendChild(card);
