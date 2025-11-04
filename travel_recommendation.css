@@ -39,6 +39,11 @@ nav {
     margin: 20px;
   }
 
+  div {
+    margin: auto;
+    width: 100%;
+  }
+
   .header {
     padding: 2em;
   }
@@ -46,6 +51,7 @@ nav {
   .content {
     background-color: rgba(150, 150, 100, 0.4);
     padding: 2em;
+    color: white;
   }
   
   h1 {
