@@ -14,7 +14,7 @@ const btnClear = document.getElementById('btnClear');
         }
 
 function searchCondition() {
-    const input = document.getElementById('conditionInput').value.toLowerCase();
+    var input = document.getElementById('conditionInput').value.toLowerCase();
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = '';
     const dataKeys = ["country", "beach", "temple"];
